@@ -1,8 +1,10 @@
+const apiKey = prompt("What is your API Key?");
+
 const city = prompt("What city do you want to see the Weather for?");
 
 
 // URL (required), options (optional)
-fetch('http://api.openweathermap.org/data/2.5/weather?q=' + city + '&APPID=e403aee2404f8ccd850fb30fa2b1ef02', {mode: 'cors'})
+fetch('http://api.openweathermap.org/data/2.5/weather?q=' + city + '&APPID=' + apiKey, {mode: 'cors'})
 .then(function(response) {
   return response.json();
 })
