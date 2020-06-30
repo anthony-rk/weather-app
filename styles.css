@@ -1,3 +1,29 @@
 body {
     background-color: lightblue;
 }
+
+h1 {
+    text-align: center;
+    color: gold;
+    background-color: black;
+}
+
+p {
+    font-style: italic;
+}
+
+#content {
+    text-align: center;
+}
+
+#weatherGeneral {
+    margin: 15px 0px 10px 0px;
+}
+
+#weatherTemp {
+    margin: 5px 0px 15px 0px;
+}
+
+.buttons {
+    margin-top: 10px;
+}

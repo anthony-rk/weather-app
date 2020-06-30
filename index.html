@@ -7,8 +7,19 @@
     <link rel="stylesheet" type="text/css" href="styles.css">
   </head>
   <body>
-    <h1>Weather</h1>
+    <h1>Weather or Not</h1>
     <div id="content">
+      <p>Enter the City, then click "Submit":</p>
+
+      <form id="frm1">
+        City: <input type="text" name="city" id="city-name" value="Ann Arbor">
+        <input type="button" onclick="runWeatherUpdate()" value="Submit">
+      </form>
+      <div class="buttons">
+        <button id="celcius-button" onclick="setTempToCelsius()">Celcius</button>
+        <button id="fahrenheit-button" onclick="setTempToFahrenheit()">Fahrenheit</button>
+      </div>
+
       <div id="weatherGeneral"></div>
       <div id="weatherTemp"></div>
     </div>

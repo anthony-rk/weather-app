@@ -1,6 +1,13 @@
 const apiKey = 'e403aee2404f8ccd850fb30fa2b1ef02';
+
+// Global Weather Object
+const currentTemp = {
+  city: 'Ann Arbor',
+  tempType: 'fahrenheit'
+}
+
 // URL (required), options (optional)
-const getWeatherData = (city, apiKey) => {
+const getWeatherData = (city, apiKey, tempType) => {
   const weatherGeneralDiv = document.getElementById('weatherGeneral');
   const weatherTempDiv = document.getElementById('weatherTemp');
 
@@ -9,13 +16,22 @@ const getWeatherData = (city, apiKey) => {
     return response.json();
   })
   .then(function(response) {
-    // console.log(response);
-    // console.log(response.weather[0].description);
-    // console.log('Temp in Celcius is: ' + Math.round(kelvinToCelcius(response.main.temp))); 
-    // console.log('Temp in Fahrenheit is: ' + Math.round(kelvinToFahrenheit(response.main.temp))); 
+    // Display weather type
     weatherGeneralDiv.innerHTML = response.weather[0].description;
-    weatherTempDiv.innerHTML = Math.round(kelvinToFahrenheit(response.main.temp));
+
+    // Display weather temperature, in C or F
+    if (tempType == 'fahrenheit') {
+      weatherTempDiv.innerHTML = Math.round(kelvinToFahrenheit(response.main.temp));
+    } else {
+      weatherTempDiv.innerHTML = Math.round(kelvinToCelcius(response.main.temp));
+    }
   });
+};
+
+const runWeatherUpdate = () => {
+  currentTemp.city = document.getElementById("city-name").value;
+  console.log(currentTemp);
+  getWeatherData(currentTemp.city, apiKey, currentTemp.tempType);
 };
 
 // Conversions from Kelvin to C or F
@@ -29,7 +45,18 @@ const kelvinToFahrenheit = (kelvinTemp) => {
     return fahrenheitTemp;
 };
 
+const setTempToCelsius = () => {
+  currentTemp.tempType = 'celcius';
+  console.log("setTempToCelcius() fn clicked");
+  runWeatherUpdate();
+};
 
-// Run this on Form Submission, either do Fahrenheit or Celcius depending on Button
-getWeatherData('Ann Arbor', apiKey);
+const setTempToFahrenheit = () => {
+  currentTemp.tempType = 'fahrenheit';
+  console.log("setTempToFahrenheit() fn clicked");
+  runWeatherUpdate();
+};
+
+runWeatherUpdate();
+
 
