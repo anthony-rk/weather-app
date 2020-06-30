@@ -17,10 +17,12 @@ p {
 }
 
 #weatherGeneral {
+    font-size: x-large;
     margin: 15px 0px 10px 0px;
 }
 
 #weatherTemp {
+    font-size: x-large;
     margin: 5px 0px 15px 0px;
 }
 
