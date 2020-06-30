@@ -17,13 +17,13 @@ const getWeatherData = (city, apiKey, tempType) => {
   })
   .then(function(response) {
     // Display weather type
-    weatherGeneralDiv.innerHTML = response.weather[0].description;
+    weatherGeneralDiv.innerHTML = "Weather: " +  response.weather[0].description;
 
     // Display weather temperature, in C or F
     if (tempType == 'fahrenheit') {
-      weatherTempDiv.innerHTML = Math.round(kelvinToFahrenheit(response.main.temp));
+      weatherTempDiv.innerHTML = "Temperature (°F): " + Math.round(kelvinToFahrenheit(response.main.temp)) + '°';
     } else {
-      weatherTempDiv.innerHTML = Math.round(kelvinToCelcius(response.main.temp));
+      weatherTempDiv.innerHTML = "Temperature (°C): " + Math.round(kelvinToCelcius(response.main.temp)) + '°';
     }
   });
 };
